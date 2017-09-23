@@ -1,0 +1,11 @@
+package: github.com/swiftdiaries/gpuscheduler
+import:
+- package: k8s.io/apimachinery
+  version: release-1.7
+  subpackages:
+  - pkg/apis/meta/v1
+- package: k8s.io/client-go
+  version: ~4.0.0
+  subpackages:
+  - kubernetes
+  - tools/clientcmd
