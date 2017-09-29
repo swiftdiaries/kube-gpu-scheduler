@@ -1,6 +1,0 @@
-package user
-
-import (
-	"fmt"
-	
-)

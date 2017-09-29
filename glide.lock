@@ -1,5 +1,5 @@
 hash: 15ed01320beb5f31042ee395ebfde78d0c2db91318b17ebdaeb2f6610562c81b
-updated: 2017-09-24T01:37:19.328566917-04:00
+updated: 2017-09-28T17:15:25.474696345-04:00
 imports:
 - name: github.com/davecgh/go-spew
   version: 5215b55f46b2b919f50a1df0eaa5886afe4e3b3d
@@ -99,6 +99,10 @@ imports:
   version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
 - name: gopkg.in/yaml.v2
   version: 53feefa2559fb8dfa8d81baad31be332c97d6c77
+- name: k8s.io/api
+  version: 81aa34336d28aadc3a8e8da7dfd9258c5157e5e4
+  subpackages:
+  - core/v1
 - name: k8s.io/apimachinery
   version: 8ab5f3d8a330c2e9baaf84e39042db8d49034ae2
   subpackages:
