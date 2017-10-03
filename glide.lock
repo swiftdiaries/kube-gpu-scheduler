@@ -1,5 +1,5 @@
 hash: 15ed01320beb5f31042ee395ebfde78d0c2db91318b17ebdaeb2f6610562c81b
-updated: 2017-09-28T17:15:25.474696345-04:00
+updated: 2017-10-03T01:50:30.967518179-04:00
 imports:
 - name: github.com/davecgh/go-spew
   version: 5215b55f46b2b919f50a1df0eaa5886afe4e3b3d
@@ -150,6 +150,11 @@ imports:
   - pkg/version
   - pkg/watch
   - third_party/forked/golang/reflect
+- name: k8s.io/apiserver
+  version: ab57ed5a72c3b67058f665d660e23bae18339fc2
+  subpackages:
+  - pkg/features
+  - pkg/util/feature
 - name: k8s.io/client-go
   version: d92e8497f71b7b4e0494e5bd204b48d34bd6f254
   subpackages:
@@ -232,8 +237,10 @@ imports:
   version: ebb8d6e0fadfc95f3d64ccecc36c8ed2ac9224ef
   subpackages:
   - pkg/api
+  - pkg/api/helper
   - pkg/api/install
   - pkg/api/v1
+  - pkg/api/v1/helper
   - pkg/api/v1/ref
   - pkg/apis/admissionregistration
   - pkg/apis/admissionregistration/v1alpha1
@@ -301,6 +308,9 @@ imports:
   - pkg/client/clientset_generated/clientset/typed/storage/v1
   - pkg/client/clientset_generated/clientset/typed/storage/v1beta1
   - pkg/client/listers/core/v1
+  - pkg/features
   - pkg/util
   - pkg/util/parsers
+  - plugin/pkg/scheduler/algorithm/priorities/util
+  - plugin/pkg/scheduler/schedulercache
 testImports: []

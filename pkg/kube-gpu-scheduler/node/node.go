@@ -58,8 +58,7 @@ func IsReady(node *v1.Node) bool {
 		if cond.Type == v1.NodeReady && cond.Status != v1.ConditionTrue {
 			fmt.Printf("Ignoring node %v with %v condition status %v", node.Name, cond.Type, cond.Status)
 			return false
-		} 
+		}
 	}
 	return true
 }
-
