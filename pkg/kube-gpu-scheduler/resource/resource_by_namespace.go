@@ -10,7 +10,12 @@ import (
 
 type NamespaceResourceMap map[string]*schedulercache.Resource
 
-func ResourceListerforPod(pods []*v1.Pod, nrm NamespaceResourceMap) NamespaceResourceMap {
+type NamespaceCPUMap map[string]int64
+type NamespaceMemoryMap map[string]float64
+type NamespaceGPUMap map[string]int64
+
+
+func ResourceListerforPod(pods []*v1.Pod, nrm NamespaceResourceMap, ncm NamespaceCPUMap, nmm NamespaceMemoryMap, ngm NamespaceGPUMap) NamespaceResourceMap {
 	for _, pod := range pods {
 		var namespace = pod.Namespace
 		podResource := &schedulercache.Resource{
@@ -25,11 +30,14 @@ func ResourceListerforPod(pods []*v1.Pod, nrm NamespaceResourceMap) NamespaceRes
 		}
 		for name, quantity := range req {
 			if name == v1.ResourceCPU {
-				podResource.MilliCPU += quantity.MilliValue()
+				podResource.MilliCPU += quantity.Value()
+				ncm[namespace] += quantity.Value() 
 			} else if name == v1.ResourceMemory {
 				podResource.Memory += quantity.Value()
+				ncm[namespace] += quantity.Value()
 			} else if name == v1.ResourceNvidiaGPU {
 				podResource.NvidiaGPU += quantity.Value()
+				ngm[namespace] += quantity.Value()
 			}
 		}
 		nrm[namespace] = podResource

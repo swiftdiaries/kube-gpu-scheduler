@@ -20,12 +20,18 @@ func main() {
 		fmt.Println(err)
 	}
 	narm := resourceutil.NamespaceResourceMap{}
+	ncm := resourceutil.NamespaceCPUMap{}
+	nmm := resourceutil.NamespaceMemoryMap{}
+	ngm := resourceutil.NamespaceGPUMap{}
 	for _, node := range nodes {
 		pods, err := podutil.ListPodsOnANode(clientset, node)
 		if err != nil {
 			fmt.Println(err)
 		}
-		narm = resourceutil.ResourceListerforPod(pods, narm)
-		fmt.Println(narm)
+		narm = resourceutil.ResourceListerforPod(pods, narm, ncm, nmm, ngm)
 	}
+	fmt.Println("Resource Map:",narm)
+	fmt.Println("CPU Map:",ncm)
+	fmt.Println("GPU Map:", ngm)
+	fmt.Println("Memory Map:", nmm)
 }
